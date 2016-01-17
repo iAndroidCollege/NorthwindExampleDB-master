@@ -235,13 +235,13 @@ public class DAO {
         cursor.moveToNext();
         String[] columns = cursor.getColumnNames();
         for (int i = 0; i < columns.length; i++) {
-            System.out.printf("%30s", columns[i]);
+            System.out.printf("%-30s", columns[i]);
         }
         System.out.println();
         while (cursor.moveToNext()) {
             for (int i = 0; i < columns.length; i++) {
                 try {
-                    System.out.printf("%30s", cursor.getString(i));
+                    System.out.printf("%-30s", cursor.getString(i));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

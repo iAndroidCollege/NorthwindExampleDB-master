@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                dao.rawQuery("SELECT FirstName, LastName, City, Region" +
+                            " FROM Employees");
 
             }
 
