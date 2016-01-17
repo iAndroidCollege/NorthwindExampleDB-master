@@ -31,10 +31,22 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 RecyclerView rv = (RecyclerView) findViewById(R.id.rvNorthwind);
                 rv.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+/*                rv.setAdapter(new NorthwindAdapter(dao.getCursor(
+                        "INSERT INTO Customers(CompanyName," +
+                                " ContactName, ContactTitle, " +
+                                "Address, City, Region, PostalCode, " +
+                                "Country, Phone, Fax)" +
+                        "VALUES('Tomer', 'iTomers', 'Eng.', 'Arlozorov 42', 'Beer Sheva'" +
+                                ",'Negev',  '84290', 'Israel', '0507123012', '0507123012')"
+                )));*/
+
                 rv.setAdapter(new NorthwindAdapter(dao.getCursor(
-                        "SELECT * FROM Employees"
+                "SELECT FirstName || ' ' || LastName " +
+                "AS FullName From Employees "
 
                 )));
+
+
 
 
             }
