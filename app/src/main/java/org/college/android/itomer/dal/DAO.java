@@ -52,7 +52,6 @@ public class DAO {
     }
 
 
-
     public List<EmployeeTerritories> getEmployeeTerritories() {
         ArrayList<EmployeeTerritories> etList = new ArrayList<>();
 
@@ -229,6 +228,9 @@ public class DAO {
         return orders;
     }
 
+    public Cursor getCursor(String sql) {
+        return db.rawQuery(sql, null);
+    }
 
     public void rawQuery(String sql) {
         Cursor cursor = db.rawQuery(sql, null);

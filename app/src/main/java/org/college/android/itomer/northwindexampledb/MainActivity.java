@@ -3,6 +3,8 @@ package org.college.android.itomer.northwindexampledb;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,8 +29,14 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dao.rawQuery("SELECT FirstName, LastName, City, Region" +
-                            " FROM Employees");
+                RecyclerView rv = (RecyclerView) findViewById(R.id.rvNorthwind);
+                rv.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+                rv.setAdapter(new NorthwindAdapter(dao.getCursor("SELECT * FROM Employees")));
+
+                dao.rawQuery("SELECT e.city, e.FirstName, e.LastName, c.ContactName, c.ContactName \n" +
+                            "FROM Employees AS e\n" +
+                            "     JOIN Customers AS c\n" +
+                            "     ON c.City = e.city;");
 
             }
 
