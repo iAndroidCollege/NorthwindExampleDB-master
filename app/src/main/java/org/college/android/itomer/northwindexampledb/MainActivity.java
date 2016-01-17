@@ -31,12 +31,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 RecyclerView rv = (RecyclerView) findViewById(R.id.rvNorthwind);
                 rv.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-                rv.setAdapter(new NorthwindAdapter(dao.getCursor("SELECT * FROM Employees")));
+                rv.setAdapter(new NorthwindAdapter(dao.getCursor(
+                        "SELECT * FROM Employees"
 
-                dao.rawQuery("SELECT e.city, e.FirstName, e.LastName, c.ContactName, c.ContactName \n" +
-                            "FROM Employees AS e\n" +
-                            "     JOIN Customers AS c\n" +
-                            "     ON c.City = e.city;");
+                )));
+
 
             }
 
