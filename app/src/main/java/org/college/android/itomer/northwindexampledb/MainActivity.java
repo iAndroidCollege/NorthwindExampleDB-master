@@ -12,22 +12,22 @@ import org.college.android.itomer.dal.DAO;
 
 public class MainActivity extends AppCompatActivity {
 
+    private DAO dao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        dao = new DAO(this);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DAO dao = new DAO(getApplicationContext());
-                dao.exploreTable("sqlite_master");
-                dao.getEmployeeTerritories();
+
 
             }
 
